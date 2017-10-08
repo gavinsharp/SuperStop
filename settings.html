@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+label {
+	display: block;
+	padding: 0.1em 0 0.1em 1em;
+}
+fieldset {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+legend {
+	font-size: 13pt;
+	font-weight: bold;
+	padding-bottom: 1em;
+}
+label > * {
+	vertical-align: middle;
+	margin-left: 0;
+}
+</style>
+<script src="settings.js"></script>
+</head>
+<body hidden>
+<fieldset>
+	<legend>Preferences</legend>
+	<label>
+		<span>Shortcut:</span>
+		<input type="input" id="shortcut">
+	</label>
+	<label>
+		<input type="checkbox" id="timers">
+		<span>Cancel timers</span>
+	</label>
+</fieldset>
+</body>
+</html>

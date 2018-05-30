@@ -3,6 +3,7 @@
 // Keep in sync with content-script.js!
 const defaultSettings = {
 	cancelTimers: true,
+	stopVideos: true,
 	shortcut: 'Shift+Esc'
 };
 let settings = null;
@@ -38,9 +39,6 @@ let loadPromise = new Promise(resolve => {
 	window.addEventListener('load', resolve, false);
 });
 
-let cancelTimersEl = null;
-let shortcutEl = null;
-
 function handleShortcutKeyDown(event) {
 	if (event.which === 8) {
 		// Clear on backspace.
@@ -61,15 +59,23 @@ function handleShortcutKeyDown(event) {
 }
 
 Promise.all([loadPromise, settingsPromise]).then(() => {
-	shortcutEl = document.getElementById("shortcut");
-	cancelTimersEl = document.getElementById("timers");
+	var shortcutEl = document.getElementById("shortcut");
+	var cancelTimersEl = document.getElementById("timers");
+	var stopVideosEl = document.getElementById("videos");
 
-	cancelTimersEl.checked = settings.cancelTimers;
 	shortcutEl.value = settings.shortcut;
+	cancelTimersEl.checked = settings.cancelTimers;
+	stopVideosEl.checked = settings.stopVideos;
 
 	cancelTimersEl.onchange = function() {
 		browser.storage.local.set({
 			"cancelTimers": this.checked
+		});
+	};
+
+	stopVideosEl.onchange = function() {
+		browser.storage.local.set({
+			"stopVideos": this.checked
 		});
 	};
 

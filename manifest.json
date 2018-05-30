@@ -3,7 +3,7 @@
 	"version": "0.2",
 	"name": "SuperStop",
 	"author": "Gavin Sharp",
-	"description": "Stop active animations, JS timers, WebSockets and XHR requests with a single key press.",
+	"description": "Stop active animations, videos, JS timers, WebSockets and XHR requests with a single key press.",
 
 	"applications": {
 		"gecko": {

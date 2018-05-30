@@ -3,6 +3,7 @@
 // Keep in sync with settings.js!
 const defaultSettings = {
 	cancelTimers: true,
+	stopVideos: true,
 	shortcut: 'Shift+Esc'
 };
 let settings = null;
@@ -61,6 +62,12 @@ function cancelTimers() {
 	timer = lastTimer + 1;
 }
 
+function stopVideos() {
+	for (let video of document.getElementsByTagName("video")) {
+		if (video.pause) video.pause();
+	}
+}
+
 function handleKeyDown(event) {
 	if (!event.isTrusted)
 		return;
@@ -79,6 +86,8 @@ browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 			superStop();
 		if (settings && settings.cancelTimers)
 			cancelTimers();
+		if (settings && settings.stopVideos)
+			stopVideos();
 	} else {
 		throw new Error("unknown message type");
 	}

@@ -4,6 +4,7 @@
 const defaultSettings = {
 	cancelTimers: true,
 	stopVideos: true,
+	stopCssAnimations: true,
 	shortcut: 'Shift+Esc'
 };
 let settings = null;
@@ -68,6 +69,12 @@ function stopVideos() {
 	}
 }
 
+function stopCssAnimations() {
+	let el = document.createElement("style");
+	el.textContent = "* { animation: none !important; }";
+	document.documentElement.appendChild(el);
+}
+
 function handleKeyDown(event) {
 	if (!event.isTrusted)
 		return;
@@ -88,6 +95,8 @@ browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 			cancelTimers();
 		if (settings && settings.stopVideos)
 			stopVideos();
+		if (settings && settings.stopCssAnimations)
+			stopCssAnimations();
 	} else {
 		throw new Error("unknown message type");
 	}

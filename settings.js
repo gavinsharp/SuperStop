@@ -4,6 +4,7 @@
 const defaultSettings = {
 	cancelTimers: true,
 	stopVideos: true,
+	stopCssAnimations: true,
 	shortcut: 'Shift+Esc'
 };
 let settings = null;
@@ -62,10 +63,12 @@ Promise.all([loadPromise, settingsPromise]).then(() => {
 	var shortcutEl = document.getElementById("shortcut");
 	var cancelTimersEl = document.getElementById("timers");
 	var stopVideosEl = document.getElementById("videos");
+	var stopAnimationsEl = document.getElementById("animations");
 
 	shortcutEl.value = settings.shortcut;
 	cancelTimersEl.checked = settings.cancelTimers;
 	stopVideosEl.checked = settings.stopVideos;
+	stopAnimationsEl.checked = settings.stopCssAnimations;
 
 	cancelTimersEl.onchange = function() {
 		browser.storage.local.set({
@@ -76,6 +79,12 @@ Promise.all([loadPromise, settingsPromise]).then(() => {
 	stopVideosEl.onchange = function() {
 		browser.storage.local.set({
 			"stopVideos": this.checked
+		});
+	};
+
+	stopAnimationsEl.onchange = function() {
+		browser.storage.local.set({
+			"stopCssAnimations": this.checked
 		});
 	};
 

@@ -71,7 +71,7 @@ function stopVideos() {
 
 function stopCssAnimations() {
 	let el = document.createElement("style");
-	el.textContent = "* { animation: none !important; }";
+	el.textContent = "*, *::before, *::after { animation: none !important; }";
 	document.documentElement.appendChild(el);
 }
 

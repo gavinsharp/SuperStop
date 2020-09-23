@@ -1,6 +1,6 @@
 {
 	"manifest_version": 2,
-	"version": "0.5",
+	"version": "0.6",
 	"name": "SuperStop",
 	"author": "Gavin Sharp",
 	"description": "Stop active animations, videos, JS timers, WebSockets and XHR requests with a single key press.",
@@ -40,5 +40,4 @@
 	},
 	
 	"browser_action": {}
-	
 }

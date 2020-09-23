@@ -29,5 +29,13 @@
 		"match_about_blank": true,
 		"run_at": "document_start",
 		"js": ["content-script.js"]
-	}]
+	}],
+	
+	"browser_action": {
+		"default_icon": {
+			"16": "icons/myicon16.png",
+			"32": "icons/myicon32.png"
+		}
+	}
+	
 }

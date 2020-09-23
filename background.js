@@ -10,6 +10,10 @@ function sendMessageToActiveTab(msg) {
 	}).catch(err => { console.error(err); });
 }
 
+browser.browserAction.onClicked.addListener((tab) => {
+  sendMessageToActiveTab({type: "do-super-stop"});
+});
+
 browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 	if (msg.type == "do-super-stop") {
 		sendMessageToActiveTab(msg);
